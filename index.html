@@ -36,17 +36,16 @@
 <body>
     <div class="timer" id="countdown"></div>
 
-    <script>
+        <script>
         function updateTimer() {
-            const targetDate = new Date();
-            targetDate.setMonth(4 - 1, 2); // Апрель - 3 месяц (нумерация с 0), день - 2
-            targetDate.setHours(18, 0, 0, 0);
-
+            // Уральское время: UTC+5
+            const targetDate = new Date(Date.UTC(2025, 3 - 1, 2, 13, 0, 0)); // 2 апреля 18:00 по Екатеринбургу (UTC+5)
+            
             const now = new Date();
             const diff = targetDate - now;
 
             if (diff <= 0) {
-                document.getElementById("countdown").innerText = "БЕГОМ СМОТРЕТЬ!";
+                document.getElementById("countdown").innerText = "Событие уже наступило!";
                 return;
             }
 
