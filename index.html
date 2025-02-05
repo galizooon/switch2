@@ -54,14 +54,7 @@
     </style>
 </head>
 <body>
-      <iframe
-    src="https://player.twitch.tv/?channel=nintendo&parent=galizooon.github.io"
-    height="600"
-    width="1200"
-    frameborder="0"
-    scrolling="no"
-    allowfullscreen="true">
-</iframe>
+     
     <div class="timer" id="countdown"></div>
 
         <script>
@@ -73,10 +66,19 @@
             const diff = targetDate - now;
 
             if (diff <= 0) {
-                document.getElementById("countdown").innerText = "Событие уже наступило!";
+                document.getElementById("countdown").innerText = "БЕГОМ СМОТРЕТЬ";
                 return;
             }
-
+           if (diff <= 24 * 60 * 60 * 1000) {
+ <iframe
+    src="https://player.twitch.tv/?channel=nintendo&parent=galizooon.github.io"
+    height="600"
+    width="1200"
+    frameborder="0"
+    scrolling="no"
+    allowfullscreen="true">
+</iframe>
+           }
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
