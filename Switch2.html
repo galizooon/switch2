@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Direct Switch 2</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Futura:wght@700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('image.png') no-repeat center center/cover;
+            color: red;
+            font-family: 'Futura', Arial, sans-serif;
+            text-align: center;
+            flex-direction: column;
+        }
+        .timer {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 4em;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer" id="countdown"></div>
+
+    <script>
+        function updateTimer() {
+            const targetDate = new Date();
+            targetDate.setMonth(4 - 1, 2); // Апрель - 3 месяц (нумерация с 0), день - 2
+            targetDate.setHours(18, 0, 0, 0);
+
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                document.getElementById("countdown").innerText = "БЕГОМ СМОТРЕТЬ!";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerText = 
+                `${days} дн. ${hours} ч. ${minutes} мин. ${seconds} сек.`;
+        }
+        
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
